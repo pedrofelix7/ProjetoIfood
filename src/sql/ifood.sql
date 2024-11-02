@@ -119,8 +119,3 @@ id_order_product_follow_up int not null primary key autoincrement,
 foreign key (order_product_id) references order_product(id),
 foreign key (follow_up_id) references follow_up(id)
 );
-
-
-
-
-
