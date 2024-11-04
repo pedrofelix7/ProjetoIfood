@@ -5,7 +5,7 @@ foreign key (id_address) references address(id),
 telephone varchar(12),
 foreign key (category_id) references category(id),
 operating_hour time,
-withdrawal tinyint(1)
+picked tinyint(1)
 );
 
 create table category(

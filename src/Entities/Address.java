@@ -1,8 +1,8 @@
-package entity;
-
+package Entities;
 
 public class Address {
-    private int idAddress;
+
+    private Long idAddress;
     private String road;
     private String district; //neighborhood(bairro)
     private String city;
@@ -12,11 +12,23 @@ public class Address {
     private String referencePoint;
     private String zipCode;
 
-    public int getIdAddress() {
+    public Address(Long idAddress, String road, String district, String city, String state, int number, String complement, String referencePoint, String zipCode) {
+        this.idAddress = idAddress;
+        this.road = road;
+        this.district = district;
+        this.city = city;
+        this.state = state;
+        this.number = number;
+        this.complement = complement;
+        this.referencePoint = referencePoint;
+        this.zipCode = zipCode;
+    }
+
+    public Long getIdAddress() {
         return idAddress;
     }
 
-    public void setIdAddress(int idAddress) {
+    public void setIdAddress(Long idAddress) {
         this.idAddress = idAddress;
     }
 
@@ -81,18 +93,6 @@ public class Address {
     }
 
     public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public Address(int idAddress, String road, String district, String city, String state, int number, String complement, String referencePoint, String zipCode) {
-        this.idAddress = idAddress;
-        this.road = road;
-        this.district = district;
-        this.city = city;
-        this.state = state;
-        this.number = number;
-        this.complement = complement;
-        this.referencePoint = referencePoint;
         this.zipCode = zipCode;
     }
 }
