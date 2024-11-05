@@ -2,7 +2,6 @@ package Entities;
 
 public class Address {
 
-    private Long idAddress;
     private String road;
     private String district; //neighborhood(bairro)
     private String city;
@@ -13,7 +12,6 @@ public class Address {
     private String zipCode;
 
     public Address(Long idAddress, String road, String district, String city, String state, int number, String complement, String referencePoint, String zipCode) {
-        this.idAddress = idAddress;
         this.road = road;
         this.district = district;
         this.city = city;
@@ -22,14 +20,6 @@ public class Address {
         this.complement = complement;
         this.referencePoint = referencePoint;
         this.zipCode = zipCode;
-    }
-
-    public Long getIdAddress() {
-        return idAddress;
-    }
-
-    public void setIdAddress(Long idAddress) {
-        this.idAddress = idAddress;
     }
 
     public String getRoad() {

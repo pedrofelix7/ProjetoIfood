@@ -1,40 +1,32 @@
 package Entities;
 
-public class OrderProduct {
+import java.util.ArrayList;
 
-    private Long idOrderProduct;
-    private Order order;
-    private Product product;
+public class OrderProduct extends Base{
+
+    private ArrayList<Orders> order;
+    private ArrayList<Products> product;
     private int quantity;
 
-    public OrderProduct(Long idOrderProduct, Order order, Product product, int quantity) {
-        this.idOrderProduct = idOrderProduct;
+    public OrderProduct(ArrayList<Orders> order, ArrayList<Products> product, int quantity) {
         this.order = order;
         this.product = product;
         this.quantity = quantity;
     }
 
-    public Long getIdOrderProduct() {
-        return idOrderProduct;
-    }
-
-    public void setIdOrderProduct(Long idOrderProduct) {
-        this.idOrderProduct = idOrderProduct;
-    }
-
-    public Order getOrder() {
+    public ArrayList<Orders> getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(ArrayList<Orders> order) {
         this.order = order;
     }
 
-    public Product getProduct() {
+    public ArrayList<Products> getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(ArrayList<Products> product) {
         this.product = product;
     }
 

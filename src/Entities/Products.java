@@ -1,6 +1,6 @@
 package Entities;
 
-public class Product {
+public class Products {
 
     private Long idProduct;
     private String name;
@@ -9,7 +9,7 @@ public class Product {
     private Category category;
     private Restaurant restaurant;
 
-    public Product(Long idProduct, String name, String description, double price, Category category, Restaurant restaurant) {
+    public Products(Long idProduct, String name, String description, double price, Category category, Restaurant restaurant) {
         this.idProduct = idProduct;
         this.name = name;
         this.description = description;

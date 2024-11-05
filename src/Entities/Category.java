@@ -1,25 +1,16 @@
 package Entities;
 
-public class Category {
+public class Category extends Base{
 
-    private Long idCategory;
     private String type;
     private String name;
     private String description;
 
-    public Category(Long idCategory, String type, String name, String description) {
-        this.idCategory = idCategory;
+    public Category(String type, String name, String description) {
+
         this.type = type;
         this.name = name;
         this.description = description;
-    }
-
-    public Long getIdCategory() {
-        return idCategory;
-    }
-
-    public void setIdCategory(Long idCategory) {
-        this.idCategory = idCategory;
     }
 
     public String getType() {

@@ -1,10 +1,23 @@
 package Entities;
 
+import java.time.LocalDateTime;
+
 public abstract class Base {
-    private static final String processing = "Processando";
-    private static final String orderConfirmed = "Pedido confirmado";
-    private static final String prepared = "Preparando";
-    private static final String sent = "Enviado";
-    private static final String orderDelivered = "Pedido entregue";
-    private static final String orderCancelled = "Pedido cancelado";
+    public static final int DISABLED = 0;
+    public static final int ENABLED = 1;
+    public static final int REMOVED = 3;
+
+    protected Long id;
+    protected int status = ENABLED;
+    protected LocalDateTime dateCreated;
+
+    protected String title;
+
+    public Base() {
+        this.dateCreated = LocalDateTime.now();
+    }
+
+    public boolean isActive() {
+        return this.status == ENABLED;
+    }
 }

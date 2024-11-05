@@ -1,25 +1,15 @@
 package Entities;
 
-public class Assessment{
+public class Assessment extends Base{
 
-    private Long idAssessment;
     private int grade; //nota
-    private Order order;
+    private Orders order;
     private Restaurant restaurant;
 
-    public Assessment(Long idAssessment, int grade, Order order, Restaurant restaurant) {
-        this.idAssessment = idAssessment;
+    public Assessment(int grade, Orders order, Restaurant restaurant) {
         this.grade = grade;
         this.order = order;
         this.restaurant = restaurant;
-    }
-
-    public Long getIdAssessment() {
-        return idAssessment;
-    }
-
-    public void setIdAssessment(Long idAssessment) {
-        this.idAssessment = idAssessment;
     }
 
     public int getGrade() {
@@ -30,11 +20,11 @@ public class Assessment{
         this.grade = grade;
     }
 
-    public Order getOrder() {
+    public Orders getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(Orders order) {
         this.order = order;
     }
 

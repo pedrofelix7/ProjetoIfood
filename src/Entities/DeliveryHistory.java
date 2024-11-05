@@ -1,12 +1,14 @@
 package Entities;
 
+import java.util.ArrayList;
+
 public class DeliveryHistory {
 
     private Long idDeliveryHistory;
     private StatusDelivery statusDelivery;
-    private Order order;
+    private ArrayList <Orders> order;
 
-    public DeliveryHistory(Long idDeliveryHistory, StatusDelivery statusDelivery, Order order) {
+    public DeliveryHistory(Long idDeliveryHistory, StatusDelivery statusDelivery, ArrayList <Orders> order) {
         this.idDeliveryHistory = idDeliveryHistory;
         this.statusDelivery = statusDelivery;
         this.order = order;
@@ -28,11 +30,11 @@ public class DeliveryHistory {
         this.statusDelivery = statusDelivery;
     }
 
-    public Order getOrder() {
+    public ArrayList<Orders> getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(ArrayList<Orders> order) {
         this.order = order;
     }
 }

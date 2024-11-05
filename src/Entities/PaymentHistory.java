@@ -2,15 +2,13 @@ package Entities;
 
 import java.time.LocalDateTime;
 
-public class PaymentHistory {
+public class PaymentHistory extends Base{
 
-    private Long idPaymentHistory;
     private LocalDateTime date;
     private PaymentMethod paymentMethod;
     private double value;
 
-    public PaymentHistory(Long idPaymentHistory, LocalDateTime date, PaymentMethod paymentMethod, double value) {
-        this.idPaymentHistory = idPaymentHistory;
+    public PaymentHistory(LocalDateTime date, PaymentMethod paymentMethod, double value) {
         this.date = date;
         this.paymentMethod = paymentMethod;
         this.value = value;
@@ -22,14 +20,6 @@ public class PaymentHistory {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
-    }
-
-    public Long getIdPaymentHistory() {
-        return idPaymentHistory;
-    }
-
-    public void setIdPaymentHistory(Long idPaymentHistory) {
-        this.idPaymentHistory = idPaymentHistory;
     }
 
     public PaymentMethod getPaymentMethod() {
@@ -47,4 +37,5 @@ public class PaymentHistory {
     public void setValue(double value) {
         this.value = value;
     }
+
 }

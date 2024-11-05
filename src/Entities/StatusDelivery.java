@@ -1,28 +1,10 @@
 package Entities;
 
 public class StatusDelivery extends Base {
-    private Long idStatusDelivery;
-    private String name;
-
-
-    public StatusDelivery(Long idStatusDelivery, String name) {
-        this.idStatusDelivery = idStatusDelivery;
-        this.name = name;
-    }
-
-    public Long getIdStatusDelivery() {
-        return idStatusDelivery;
-    }
-
-    public void setIdStatusDelivery(Long idStatusDelivery) {
-        this.idStatusDelivery = idStatusDelivery;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private static final String processing = "Processando";
+    private static final String orderConfirmed = "Pedido confirmado";
+    private static final String prepared = "Preparando";
+    private static final String sent = "Enviado";
+    private static final String orderDelivered = "Pedido entregue";
+    private static final String orderCancelled = "Pedido cancelado";
 }

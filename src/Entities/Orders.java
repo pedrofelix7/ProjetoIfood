@@ -1,23 +1,23 @@
 package Entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
-public class Order {
+public class Orders extends Base {
 
-    private Long idOrder;
     private LocalDateTime date;
     private Restaurant restaurant;
     private double value;
     private double deliveryFee;
     private Promotion promotion;
-    private StatusDelivery statusDelivery;
+    private ArrayList<StatusDelivery> statusDelivery;
     private PaymentMethod paymentMethod;
     private String observation;
     private double change;
     private Address address;
 
-    public Order(Long idOrder, LocalDateTime date, Restaurant restaurant, double value, double deliveryFee, Promotion promotion, StatusDelivery statusDelivery, PaymentMethod paymentMethod, String observation, double change, Address address) {
-        this.idOrder = idOrder;
+    public Orders(LocalDateTime date, Restaurant restaurant, double value, double deliveryFee, Promotion promotion, ArrayList<StatusDelivery> statusDelivery, PaymentMethod paymentMethod, String observation, double change, Address address) {
+
         this.date = date;
         this.restaurant = restaurant;
         this.value = value;
@@ -28,14 +28,6 @@ public class Order {
         this.observation = observation;
         this.change = change;
         this.address = address;
-    }
-
-    public Long getIdOrder() {
-        return idOrder;
-    }
-
-    public void setIdOrder(Long idOrder) {
-        this.idOrder = idOrder;
     }
 
     public LocalDateTime getDate() {
@@ -78,11 +70,11 @@ public class Order {
         this.promotion = promotion;
     }
 
-    public StatusDelivery getStatusDelivery() {
+    public ArrayList<StatusDelivery> getStatusDelivery() {
         return statusDelivery;
     }
 
-    public void setStatusDelivery(StatusDelivery statusDelivery) {
+    public void setStatusDelivery(ArrayList<StatusDelivery> statusDelivery) {
         this.statusDelivery = statusDelivery;
     }
 

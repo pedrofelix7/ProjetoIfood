@@ -2,30 +2,20 @@ package Entities;
 
 import java.util.Date;
 
-public class Promotion {
+public class Promotion extends Base{
 
-    private Long idPromotion;
     private String name;
     private String code;
     private String type;
     private double value;
     private Date validity;
 
-    public Promotion(Long idPromotion, String name, String code, String type, double value, Date validity) {
-        this.idPromotion = idPromotion;
+    public Promotion(String name, String code, String type, double value, Date validity) {
         this.name = name;
         this.code = code;
         this.type = type;
         this.value = value;
         this.validity = validity;
-    }
-
-    public Long getIdPromotion() {
-        return idPromotion;
-    }
-
-    public void setIdPromotion(Long idPromotion) {
-        this.idPromotion = idPromotion;
     }
 
     public String getName() {

@@ -2,19 +2,19 @@ package Entities;
 
 public class ProductFollowUp {
 
-    private Product product;
+    private Products product;
     private FollowUp followUp;
 
-    public ProductFollowUp(Product product, FollowUp followUp) {
+    public ProductFollowUp(Products product, FollowUp followUp) {
         this.product = product;
         this.followUp = followUp;
     }
 
-    public Product getProduct() {
+    public Products getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(Products product) {
         this.product = product;
     }
 

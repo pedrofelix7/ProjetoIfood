@@ -1,22 +1,15 @@
 package Entities;
 
-public class OrderProductFollowUp {
-    private Long idOrderProductFollowUp;
-    private OrderProduct orderProduct;
-    private FollowUp followUp;
+import java.util.ArrayList;
 
-    public OrderProductFollowUp(Long idOrderProductFollowUp, OrderProduct orderProduct, FollowUp followUp) {
-        this.idOrderProductFollowUp = idOrderProductFollowUp;
+public class OrderProductFollowUp extends Base{
+
+    private OrderProduct orderProduct;
+    private ArrayList<FollowUp> followUp;
+
+    public OrderProductFollowUp(OrderProduct orderProduct, ArrayList<FollowUp> followUp) {
         this.orderProduct = orderProduct;
         this.followUp = followUp;
-    }
-
-    public Long getIdOrderProductFollowUp() {
-        return idOrderProductFollowUp;
-    }
-
-    public void setIdOrderProductFollowUp(Long idOrderProductFollowUp) {
-        this.idOrderProductFollowUp = idOrderProductFollowUp;
     }
 
     public OrderProduct getOrderProduct() {
@@ -27,11 +20,11 @@ public class OrderProductFollowUp {
         this.orderProduct = orderProduct;
     }
 
-    public FollowUp getFollowUp() {
+    public ArrayList<FollowUp> getFollowUp() {
         return followUp;
     }
 
-    public void setFollowUp(FollowUp followUp) {
+    public void setFollowUp(ArrayList<FollowUp> followUp) {
         this.followUp = followUp;
     }
 }

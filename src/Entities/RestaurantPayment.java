@@ -1,20 +1,22 @@
 package Entities;
 
+import java.util.ArrayList;
+
 public class RestaurantPayment {
 
-    private Restaurant restaurant;
+    private ArrayList<Restaurant> restaurant;
     private PaymentMethod paymentMethod;
 
-    public RestaurantPayment(Restaurant restaurant, PaymentMethod paymentMethod) {
+    public RestaurantPayment(ArrayList<Restaurant> restaurant, PaymentMethod paymentMethod) {
         this.restaurant = restaurant;
         this.paymentMethod = paymentMethod;
     }
 
-    public Restaurant getRestaurant() {
+    public ArrayList<Restaurant> getRestaurant() {
         return restaurant;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
+    public void setRestaurant(ArrayList<Restaurant> restaurant) {
         this.restaurant = restaurant;
     }
 
