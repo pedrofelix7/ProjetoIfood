@@ -11,7 +11,7 @@ public class Address {
     private String referencePoint;
     private String zipCode;
 
-    public Address(Long idAddress, String road, String district, String city, String state, int number, String complement, String referencePoint, String zipCode) {
+    public Address(String road, String district, String city, String state, int number, String complement, String referencePoint, String zipCode) {
         this.road = road;
         this.district = district;
         this.city = city;
