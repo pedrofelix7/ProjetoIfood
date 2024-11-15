@@ -6,9 +6,9 @@ public class DeliveryHistory {
 
     private Long idDeliveryHistory;
     private StatusDelivery statusDelivery;
-    private ArrayList <Orders> order;
+    private ArrayList<Orders> order;
 
-    public DeliveryHistory(Long idDeliveryHistory, StatusDelivery statusDelivery, ArrayList <Orders> order) {
+    public DeliveryHistory(Long idDeliveryHistory, StatusDelivery statusDelivery, ArrayList<Orders> order) {
         this.idDeliveryHistory = idDeliveryHistory;
         this.statusDelivery = statusDelivery;
         this.order = order;

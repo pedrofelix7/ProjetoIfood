@@ -1,6 +1,6 @@
 package Entities;
 
-public class FollowUp extends Base{
+public class FollowUp extends Base {
 
     private String name;
     private String description;

@@ -2,7 +2,7 @@ package Entities;
 
 import java.util.ArrayList;
 
-public class OrderProduct extends Base{
+public class OrderProduct extends Base {
 
     private ArrayList<Orders> order;
     private ArrayList<Products> product;

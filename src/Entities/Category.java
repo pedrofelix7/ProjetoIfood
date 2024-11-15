@@ -1,6 +1,6 @@
 package Entities;
 
-public class Category extends Base{
+public class Category extends Base {
 
     private String type;
     private String name;

@@ -1,8 +1,9 @@
 package Entities;
 
 import java.time.LocalDateTime;
+import java.util.Scanner;
 
-public class Restaurant extends Base{
+public class Restaurant extends Base {
     private String name;
     private Address address;
     private String telephone;
@@ -10,14 +11,22 @@ public class Restaurant extends Base{
     private LocalDateTime operatingHour;
     private Boolean Picked = true;
 
-    public Restaurant(String name, Address address, String telephone, Category category, LocalDateTime operatingHour, Boolean picked) {
-        this.name = name;
-        this.address = address;
-        this.telephone = telephone;
-        this.category = category;
-        this.operatingHour = operatingHour;
-        Picked = picked;
+
+    public Restaurant() {
+       this.name = name;
+      this.address = address;
+     this.telephone = telephone;
+      this.category = category;
+     this.operatingHour = operatingHour;
     }
+//    public Restaurant(String name, Address address, String telephone, Category category, LocalDateTime operatingHour, Boolean picked) {
+//        this.name = name;
+//        this.address = address;
+//        this.telephone = telephone;
+//        this.category = category;
+//        this.operatingHour = operatingHour;
+//        Picked = picked;
+//    }
 
     public String getName() {
         return name;
@@ -65,5 +74,30 @@ public class Restaurant extends Base{
 
     public void setPicked(Boolean picked) {
         Picked = picked;
+    }
+
+    public int selectRest(){
+        Scanner entry = new Scanner(System.in);
+        System.out.println("Qual restaurante gostaria de escolher?");
+        System.out.println("1. Cantana");
+        System.out.println("2. Ferreira Espetos");
+        System.out.println("3. Falcão Espetos");
+
+        int choice = entry.nextInt();
+        switch (choice) {
+            case 1:
+                System.out.println("Você selecionou: Cantana");
+                break;
+            case 2:
+                System.out.println("Você selecionou: Ferreira Espetos");
+                break;
+            case 3:
+                System.out.println("Você selecionou: Falcão Espetos");
+                break;
+            default:
+                throw new IllegalArgumentException("Opção Inválida, tente novamente.");
+        }
+        return choice;
+
     }
 }

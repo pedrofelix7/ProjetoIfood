@@ -2,7 +2,7 @@ package Entities;
 
 import java.time.LocalDateTime;
 
-public class PaymentHistory extends Base{
+public class PaymentHistory extends Base {
 
     private LocalDateTime date;
     private PaymentMethod paymentMethod;

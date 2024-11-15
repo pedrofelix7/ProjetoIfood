@@ -2,7 +2,7 @@ package Entities;
 
 import java.util.ArrayList;
 
-public class OrderProductFollowUp extends Base{
+public class OrderProductFollowUp extends Base {
 
     private OrderProduct orderProduct;
     private ArrayList<FollowUp> followUp;
@@ -27,4 +27,6 @@ public class OrderProductFollowUp extends Base{
     public void setFollowUp(ArrayList<FollowUp> followUp) {
         this.followUp = followUp;
     }
+
+
 }

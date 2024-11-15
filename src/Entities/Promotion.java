@@ -2,7 +2,7 @@ package Entities;
 
 import java.util.Date;
 
-public class Promotion extends Base{
+public class Promotion extends Base {
 
     private String name;
     private String code;

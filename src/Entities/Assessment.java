@@ -1,6 +1,6 @@
 package Entities;
 
-public class Assessment extends Base{
+public class Assessment extends Base {
 
     private int grade; //nota
     private Orders order;
