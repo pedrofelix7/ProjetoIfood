@@ -397,6 +397,15 @@ GROUP BY mes
 ORDER BY total_vendas DESC
 LIMIT 1;
 
+SELECT * FROM orders WHERE MONTH(date) = MONTH(CURRENT_DATE) AND YEAR(date) = YEAR(CURRENT_DATE);
+
+INSERT INTO orders (date, restaurant_id, value, delivery_fee, promotion_id, status_delivery_id, payment_method_id, observation, transshipment, address_id)
+VALUES
+(CURRENT_DATE, 1, 100.00, 5.00, 1, 1, 1, 'Teste 1', 1.00, 1),
+(CURRENT_DATE, 2, 150.00, 10.00, 2, 2, 2, 'Teste 2', 2.00, 2);
+
+SELECT * FROM orders;
+
 SELECT pm.payment_type, SUM(o.value) AS total_vendas
 FROM orders o
 INNER JOIN payment_method pm ON o.payment_method_id = pm.id_payment_method
