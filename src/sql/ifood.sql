@@ -1,121 +1,144 @@
-create table restaurant(
-id_restaurant int not null primary key autoincrement,
-name varchar(50),
-foreign key (id_address) references address(id),
-telephone varchar(12),
-foreign key (category_id) references category(id),
-operating_hour time,
-picked tinyint(1)
+CREATE TABLE address (
+    id_address INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    road VARCHAR(100),
+    neighborhood VARCHAR(50),
+    city VARCHAR(50),
+    state VARCHAR(50),
+    number INT,
+    complement VARCHAR(50),
+    reference_point VARCHAR(200),
+    zip_code VARCHAR(10)
 );
 
-create table category(
-id_category int not null primary key autoincrement,
-type varchar(50),
-name varchar(25),
-description varchar(200)
+CREATE TABLE category (
+    id_category INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    type VARCHAR(50),
+    name VARCHAR(25),
+    description VARCHAR(200)
 );
 
-create table product(
-id_product int not null primary key autoincrement,
-name varchar(50),
-description varchar(200),
-price decimal(5, 2),
-foreign key (category_id) references category(id),
-foreign key (restaurant_id) references restaurant(id)
+CREATE TABLE restaurant (
+    id_restaurant INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    id_address INT,
+    telephone VARCHAR(12),
+    category_id INT,
+    operating_hour TIME,
+    picked TINYINT(1),
+    FOREIGN KEY (id_address) REFERENCES address(id_address),
+    FOREIGN KEY (category_id) REFERENCES category(id_category)
 );
 
-create table follow_up(
-id_follow_up int not null primary key autoincrement,
-name varchar(50),
-description varchar(50),
-value decimal(5, 2)
+CREATE TABLE product (
+    id_product INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    description VARCHAR(200),
+    price DECIMAL(5, 2),
+    category_id INT,
+    restaurant_id INT,
+    FOREIGN KEY (category_id) REFERENCES category(id_category),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant(id_restaurant)
 );
 
-create table address(
-id_address int not null primary key autoincrement,
-road varchar(100),
-neighborhood varchar(50),
-city varchar(50),
-state varchar(50),
-number int,
-complement varchar(50),
-reference_point varchar(200),
-zip_code varchar(10)
+CREATE TABLE follow_up (
+    id_follow_up INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    description VARCHAR(50),
+    value DECIMAL(5, 2)
 );
 
-create table promotion(
-id_promotion int not null primary key autoincrement,
-name varchar(50),
-code varchar(50),
-type varchar(50),
-value decimal(5, 2),
-validity date
+CREATE TABLE promotion (
+    id_promotion INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    code VARCHAR(50),
+    type VARCHAR(50),
+    value DECIMAL(5, 2),
+    validity DATE
 );
 
-create table assessment(
-id_assessment int not null primary key autoincrement,
-grade int,
-foreign key (order_id) references order(id),
-foreign key (restaurant_id) references restaurant(id)
+CREATE TABLE status_delivery (
+    id_status_delivery INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50)
 );
 
-create table status_delivery(
-id_status_delivery int not null primary key autoincrement,
-name varchar(50)
-)
-
-create table product_follow_up(
-foreign key (product_id) references product(id),
-foreign key (follow_up_id) references follow_up(id)
+CREATE TABLE payment_method (
+    id_payment_method INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    payment_type VARCHAR(50)
 );
 
-create table payment_method(
-id_payment_method int not null primary key autoincrement,
-payment type varchar(50)
+CREATE TABLE payment_history (
+    id_payment_history INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    date DATE,
+    payment_method_id INT,
+    value DECIMAL(5, 2),
+    FOREIGN KEY (payment_method_id) REFERENCES payment_method(id_payment_method)
 );
 
-create table payment_history(
-id_payment_history int not null primary key autoincrement,
-date date,
-foreign key (payment_method_id) references payment_method(id),
-value decimal(5, 2)
+CREATE TABLE delivery_history (
+    id_delivery_history INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    status_delivery_id INT,
+    order_id INT,
+    FOREIGN KEY (status_delivery_id) REFERENCES status_delivery(id_status_delivery),
+    FOREIGN KEY (order_id) REFERENCES `order`(id_order)
 );
 
-create table delivery_history(
-id_delivery_history int not null primary key autoincrement,
-foreign key (status_delivery_id) references status_delivery(id),
-foreign key (order_id) references order(id)
-
+CREATE TABLE restaurant_payment (
+    restaurant_id INT,
+    payment_method_id INT,
+    PRIMARY KEY (restaurant_id, payment_method_id),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant(id_restaurant),
+    FOREIGN KEY (payment_method_id) REFERENCES payment_method(id_payment_method)
 );
 
-create table restaurant_payment(
-foreign key (restaurant_id) references restaurant(id),
-foreign key (payment_method_id) references payment_method(id)
+CREATE TABLE `order` (
+    id_order INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    date DATE,
+    restaurant_id INT,
+    value DECIMAL(5, 2),
+    delivery_fee DECIMAL(5, 2),
+    promotion_id INT,
+    status_delivery_id INT,
+    payment_method_id INT,
+    observation VARCHAR(200),
+    change DECIMAL(5, 2),
+    address_id INT,
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant(id_restaurant),
+    FOREIGN KEY (promotion_id) REFERENCES promotion(id_promotion),
+    FOREIGN KEY (status_delivery_id) REFERENCES status_delivery(id_status_delivery),
+    FOREIGN KEY (payment_method_id) REFERENCES payment_method(id_payment_method),
+    FOREIGN KEY (address_id) REFERENCES address(id_address)
 );
 
-create table order(
-id_order int not null primary key autoincrement,
-date date,
-foreign key (restaurant_id) references restaurant(id),
-value decimal(5, 2),
-delivery_fee decimal(5, 2),
-foreign key (promotion_id) references promotion(id),
-foreign key (status_delivery_id) references status_delivery(id),
-foreign key (payment_method_id) references payment_method(id),
-observation varchar(200),
-change decimal(5,2),
-foreign key (address_id) references address(id)
+CREATE TABLE assessment (
+    id_assessment INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    grade INT,
+    order_id INT,
+    restaurant_id INT,
+    FOREIGN KEY (order_id) REFERENCES `order`(id_order),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant(id_restaurant)
 );
 
-create table order_product(
-id_order_product int not null primary key autoincrement,
-foreign key (order_id) references order(id)
-foreign key (product_id) references product(id),
-quantity int
+CREATE TABLE order_product (
+    id_order_product INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    order_id INT,
+    product_id INT,
+    quantity INT,
+    FOREIGN KEY (order_id) REFERENCES `order`(id_order),
+    FOREIGN KEY (product_id) REFERENCES product(id_product)
 );
 
-create table order_product_follow_up(
-id_order_product_follow_up int not null primary key autoincrement,
-foreign key (order_product_id) references order_product(id),
-foreign key (follow_up_id) references follow_up(id)
+CREATE TABLE product_follow_up (
+    product_id INT,
+    follow_up_id INT,
+    PRIMARY KEY (product_id, follow_up_id),
+    FOREIGN KEY (product_id) REFERENCES product(id_product),
+    FOREIGN KEY (follow_up_id) REFERENCES follow_up(id_follow_up)
+);
+
+CREATE TABLE order_product_follow_up (
+    id_order_product_follow_up INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    order_product_id INT,
+    follow_up_id INT,
+    FOREIGN KEY (order_product_id) REFERENCES order_product(id_order_product),
+    FOREIGN KEY (follow_up_id) REFERENCES follow_up(id_follow_up)
 );

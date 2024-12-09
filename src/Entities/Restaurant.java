@@ -1,32 +1,25 @@
 package Entities;
 
 import java.time.LocalDateTime;
-import java.util.Scanner;
 
 public class Restaurant extends Base {
+    private long id;
     private String name;
     private Address address;
     private String telephone;
     private Category category;
     private LocalDateTime operatingHour;
-    private Boolean Picked = true;
-
+    private boolean picked = true;
 
     public Restaurant() {
-       this.name = name;
-      this.address = address;
-     this.telephone = telephone;
-      this.category = category;
-     this.operatingHour = operatingHour;
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.telephone = telephone;
+        this.category = category;
+        this.operatingHour = operatingHour;
+        picked = picked;
     }
-//    public Restaurant(String name, Address address, String telephone, Category category, LocalDateTime operatingHour, Boolean picked) {
-//        this.name = name;
-//        this.address = address;
-//        this.telephone = telephone;
-//        this.category = category;
-//        this.operatingHour = operatingHour;
-//        Picked = picked;
-//    }
 
     public String getName() {
         return name;
@@ -69,35 +62,23 @@ public class Restaurant extends Base {
     }
 
     public Boolean getPicked() {
-        return Picked;
+        return picked;
     }
 
-    public void setPicked(Boolean picked) {
-        Picked = picked;
+    public void setPicked(boolean picked) {
+        picked = picked;
     }
 
-    public int selectRest(){
-        Scanner entry = new Scanner(System.in);
-        System.out.println("Qual restaurante gostaria de escolher?");
-        System.out.println("1. Cantana");
-        System.out.println("2. Ferreira Espetos");
-        System.out.println("3. Falcão Espetos");
+    public long getId() {
+        return id;
+    }
 
-        int choice = entry.nextInt();
-        switch (choice) {
-            case 1:
-                System.out.println("Você selecionou: Cantana");
-                break;
-            case 2:
-                System.out.println("Você selecionou: Ferreira Espetos");
-                break;
-            case 3:
-                System.out.println("Você selecionou: Falcão Espetos");
-                break;
-            default:
-                throw new IllegalArgumentException("Opção Inválida, tente novamente.");
-        }
-        return choice;
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public boolean isPicked() {
+        return picked;
     }
 }
+

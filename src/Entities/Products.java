@@ -1,22 +1,30 @@
 package Entities;
 
-import java.util.ArrayList;
-
 public class Products extends Base {
 
+    private long id;
     private String name;
     private String description;
     private double price;
-    private Category category;
-    private ArrayList<Restaurant> restaurant;
+    private int category;
+    private int restaurant;
 
-    public Products(String name, String description, double price, Category category, Restaurant restaurant) {
+    public Products() {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = category;
+        this.restaurant = restaurant;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -42,11 +50,19 @@ public class Products extends Base {
         this.price = price;
     }
 
-    public Category getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(int category) {
         this.category = category;
+    }
+
+    public int getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(int restaurant) {
+        this.restaurant = restaurant;
     }
 }

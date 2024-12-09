@@ -2,16 +2,18 @@ package Entities;
 
 public class Address {
 
+    private long id;
     private String road;
     private String district; //neighborhood(bairro)
     private String city;
     private String state;
-    private int number;
+    private String number;
     private String complement;
     private String referencePoint;
     private String zipCode;
 
-    public Address(String road, String district, String city, String state, int number, String complement, String referencePoint, String zipCode) {
+    public Address() {
+        this.id = id;
         this.road = road;
         this.district = district;
         this.city = city;
@@ -20,6 +22,14 @@ public class Address {
         this.complement = complement;
         this.referencePoint = referencePoint;
         this.zipCode = zipCode;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getRoad() {
@@ -54,11 +64,11 @@ public class Address {
         this.state = state;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

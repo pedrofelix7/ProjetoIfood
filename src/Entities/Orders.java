@@ -2,16 +2,16 @@ package Entities;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Orders extends Base {
 
     private static long orderCounter = 1;
     private static long orderNumber;
 
+    private long id;
     private static LocalDateTime date;
     private static Restaurant restaurant;
-    private static double value;
+    private static double totalValue;
     private static double deliveryFee;
     private static Promotion promotion;
     private static ArrayList<StatusDelivery> statusDelivery;
@@ -20,23 +20,49 @@ public class Orders extends Base {
     private static double change;
     private static Address address;
 
-    private static ArrayList<String> foodSelection = new ArrayList<>();
-    private static ArrayList<String> drinkSelection = new ArrayList<>();
-    private static ArrayList<String> followUpSelection = new ArrayList<>();
+
 
     public Orders() {
 
-//        this.date = date;
-//        this.restaurant = restaurant;
-//        this.value = value;
-//        this.deliveryFee = deliveryFee;
-//        this.promotion = promotion;
-//        this.statusDelivery = statusDelivery;
-//        this.paymentMethod = paymentMethod;
-//        this.observation = observation;
-//        this.change = change;
-//        this.address = address;
-//        this.orderNumber = orderCounter++;
+        this.id = id;
+        this.date = date;
+        this.totalValue = totalValue;
+        this.deliveryFee = deliveryFee;
+        this.promotion = promotion;
+        this.statusDelivery = statusDelivery;
+        this.paymentMethod = paymentMethod;
+        this.observation = observation;
+        this.change = change;
+        this.address = address;
+        this.orderNumber = orderCounter++;
+    }
+
+    public static long getOrderCounter() {
+        return orderCounter;
+    }
+
+    public static void setOrderCounter(long orderCounter) {
+        Orders.orderCounter = orderCounter;
+    }
+
+    public static void setOrderNumber(long orderNumber) {
+        Orders.orderNumber = orderNumber;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public static double getTotalValue() {
+        return totalValue;
+    }
+
+    public static void setTotalValue(double totalValue) {
+        Orders.totalValue = totalValue;
     }
 
     public LocalDateTime getDate() {
@@ -56,11 +82,11 @@ public class Orders extends Base {
     }
 
     public double getValue() {
-        return value;
+        return totalValue;
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void setValue(double totalValue) {
+        this.totalValue = totalValue;
     }
 
     public double getDeliveryFee() {
@@ -91,7 +117,7 @@ public class Orders extends Base {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
+    public void setPaymentMethod(ArrayList<PaymentMethod> paymentMethods) {
         this.paymentMethod = paymentMethod;
     }
 
@@ -123,106 +149,4 @@ public class Orders extends Base {
         return orderNumber;
     }
 
-    static Scanner entry = new Scanner(System.in);
-
-//    public String toString() {
-//        return "Pedido " + orderNumber + ":" + "\n" +
-//                "Data do pedido: " + date + "\n" +
-//                "Restaurante: " + this.getRestaurant().getName() + "\n" +
-//                "Valor do pedido: " + getValue() + "\n" +
-//                "Taxa de entrega: " + getDeliveryFee() + "\n" +
-//                "Observação: " + getObservation() + "\n" +
-//                "Endereço: " + getAddress();
-//    }
-
-    public static void selectFood() {
-        System.out.println("Selecione sua comida: ");
-        System.out.println("1. Parmegiana de Carne");
-        System.out.println("2. Parmegiana de Frango");
-        System.out.println("3. Espeto de picanha");
-        int choice = entry.nextInt();
-        switch (choice) {
-            case 1:
-                foodSelection.add("Parmegiana de carne");
-                System.out.println("Você selecionou: Parmegiana de carne");
-                break;
-            case 2:
-                foodSelection.add("Parmegiana de frango");
-                System.out.println("Você selecionou: Parmegiana de frango");
-                break;
-            case 3:
-                foodSelection.add("Espeto de picanha");
-                System.out.println("Você selecionou: Espeto de picanha");
-                break;
-            default:
-                throw new IllegalArgumentException("Opção inválida!" + "\n" + "Por favor selecione uma das opções válidas");
-
-        }
-    }
-
-    public static void selectDrink() {
-        System.out.println("Selecione sua bebida: ");
-        System.out.println("1. Coca-Cola Lata");
-        System.out.println("2. Coca-Cola Lata Zero");
-        System.out.println("3. Guaraná Antártica Lata");
-        System.out.println("4. Guaraná Antártica Lata Zero");
-
-        int choice2 = entry.nextInt();
-        switch (choice2) {
-            case 1:
-                drinkSelection.add("Coca-Cola Lata");
-                System.out.println("Você selecionou: Coca-Cola Lata");
-                break;
-            case 2:
-                drinkSelection.add("Coca-Cola Lata Zero");
-                System.out.println("Você selecionou: Coca-Cola Lata Zero");
-                break;
-            case 3:
-                drinkSelection.add("Guaraná Antártica Lata");
-                System.out.println("Você selecionou: Guaraná Antártica Lata");
-                break;
-            case 4:
-                drinkSelection.add("Guaraná Antártica Lata Zero");
-                System.out.println("Você selecionou: Guaraná Antártica Lata Zero");
-                break;
-            default:
-                throw new IllegalArgumentException("Opção inválida!" + "\n" + "Por favor selecione uma das opções válidas");
-        }
-    }
-
-    public static void selectFollowUp() {
-        System.out.println("Selecione os acompanhamentos");
-        System.out.println("1. Arroz");
-        System.out.println("2. Macarrão");
-        System.out.println("3. Farofa");
-        System.out.println("4. Vinagrete");
-
-        int choice3 = entry.nextInt();
-        switch (choice3) {
-            case 1:
-                followUpSelection.add("Arroz");
-                System.out.println("Você selecionou arroz");
-                break;
-            case 2:
-                followUpSelection.add("Macarrão");
-                System.out.println("Você selecionou macarrão");
-                break;
-            case 3:
-                followUpSelection.add("Farofa");
-                System.out.println("Você selecionou farofa");
-                break;
-            case 4:
-                followUpSelection.add("Vinagrete");
-                System.out.println("Você selecionou vinagrete");
-                break;
-            default:
-                throw new IllegalArgumentException("Opção inválida!" + "\n" + "Por favor selecione uma das opções válidas");
-        }
-    }
-    public static void showCart(){
-        System.out.println("Carrinho: ");
-        System.out.println("Comidas: " + foodSelection);
-        System.out.println("Bebidas: " + drinkSelection);
-        System.out.println("Acompanhamentos: " + followUpSelection);
-    }
 }

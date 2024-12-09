@@ -6,7 +6,7 @@ public class Category extends Base {
     private String name;
     private String description;
 
-    public Category(String type, String name, String description) {
+    public Category() {
 
         this.type = type;
         this.name = name;
