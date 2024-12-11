@@ -1,4 +1,4 @@
-CREATE database ifood;
+
 USE ifood;
 
 CREATE TABLE clientes(
@@ -99,7 +99,7 @@ VALUES
 UPDATE restaurant
 SET id_address = 1, category_id = 1;
 
-SELECT * FROM restaurant;
+SELECT * FROM restaurant; 
 
 CREATE TABLE product (
     id_product INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -412,3 +412,27 @@ INNER JOIN payment_method pm ON o.payment_method_id = pm.id_payment_method
 WHERE MONTH(o.date) = MONTH(CURRENT_DATE) AND YEAR(o.date) = YEAR(CURRENT_DATE)
 GROUP BY pm.payment_type
 ORDER BY total_vendas DESC;
+
+DELETE FROM delivery_history WHERE orders_id IN (
+    SELECT id_orders FROM orders WHERE restaurant_id IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+);
+DELETE FROM orders WHERE restaurant_id IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+DELETE FROM restaurant WHERE id_restaurant IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+DELETE FROM orders_product WHERE orders_id IN (
+    SELECT id_orders FROM orders WHERE restaurant_id IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+);
+DELETE FROM orders WHERE restaurant_id IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+DELETE FROM product WHERE restaurant_id IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+DELETE FROM restaurant_payment WHERE restaurant_id IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+DELETE FROM restaurant WHERE id_restaurant IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+select * from product;
+
+DELETE FROM product WHERE id_product IN (2, 3);
+
+ALTER TABLE product AUTO_INCREMENT = 1;
+select * from category;
